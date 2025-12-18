@@ -1,11 +1,11 @@
 
-# Vending Machines
+## Vending Machines
      - Role: Event producers (edge devices)
           - Physical devices generating telemetry and operational events
           - Events include health status, errors, transactions, connectivity, etc.
           - These events are pushed upstream in near real time
 
-# Event Collector Application (Running on Amazon EKS)
+## Event Collector Application (Running on Amazon EKS)
      - Role: Ingestion & normalization layer
           - A containerized application running on Amazon EKS
           - Receives raw events from vending machines via APIs or protocols
@@ -15,3 +15,11 @@
           - Horizontal scalability
           - High availability
           - Cloud-native deployment and upgrades
+
+## Amazon MSK (Kafka Cluster)
+     - Role: Central event backbone
+          - Fully managed Apache Kafka service
+          - Decouples producers (Event Collector) from consumers (Flink, Lambda, etc.)
+          - Ensures durability, ordering, and replayability of events
+     - Key benefit:
+          - Acts as the single source of truth for all event streams
